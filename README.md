@@ -11,4 +11,4 @@ This project is an Android application developed using Kotlin and Java. It uses 
 
 1. **Clone the repository:**
    ```sh
-   git clone <repository-url>
+   git clone https://github.com/Jibert107/Projet-Mobile.git
