@@ -12,15 +12,14 @@ import com.example.projetdurand_smet.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 import java.net.InetAddress
 import java.net.NetworkInterface
-import java.util.*
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.ExistingPeriodicWorkPolicy
 import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
-import android.net.LinkProperties
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.tasks.Task
 import android.location.Location
-
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,6 +33,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        scheduleWork()
+        val sharedPreferences = getSharedPreferences("QuestionPrefs", Context.MODE_PRIVATE)
+        val question = sharedPreferences.getString("question", "Quel jour sommes-nous ?")
+        val correctAnswer = sharedPreferences.getString("answer", "")
+
+        binding.tvQuestion.text = question
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         requestPermissions()
@@ -54,7 +59,17 @@ class MainActivity : AppCompatActivity() {
             } else {
                 Snackbar.make(it, "Wrong answer, try again!", Snackbar.LENGTH_LONG).show()
             }
+
         }
+    }
+
+    private fun scheduleWork() {
+        val workRequest = PeriodicWorkRequestBuilder<MyWorker>(1, TimeUnit.DAYS).build()
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+            "UpdateQuestionWork",
+            ExistingPeriodicWorkPolicy.REPLACE,
+            workRequest
+        )
     }
 
     private fun requestPermissions() {
