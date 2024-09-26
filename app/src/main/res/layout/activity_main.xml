@@ -3,24 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/background_color"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/tvQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Question" />
-
+        android:text="Question"
+        android:textSize="18sp"
+        android:textColor="@color/text_color"
+        android:layout_marginBottom="8dp" />
 
     <EditText
         android:id="@+id/etAnswer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your answer" />
+        android:hint="Enter your answer"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit" />
+        android:text="Submit"
+        android:padding="12dp"
+        android:background="@drawable/button_background"
+        android:textColor="@color/white" />
 </LinearLayout>
