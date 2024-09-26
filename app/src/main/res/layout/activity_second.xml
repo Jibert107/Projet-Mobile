@@ -5,6 +5,15 @@
     android:orientation="vertical"
     tools:context=".SecondActivity">
 
+    <ImageView
+        android:id="@+id/imageViewPole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pole"
+        android:contentDescription="@string/pole_image_desc"
+        android:scaleType="centerCrop"
+        android:padding="16dp" />
+
     <TextView
         android:id="@+id/tvLocation"
         android:layout_width="wrap_content"
@@ -24,6 +33,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="DNS Servers :"
+        android:padding="16dp" />
+    <TextView
+        android:id="@+id/tvAdditionalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Texte supplémentaire en dur"
         android:padding="16dp" />
 
 </LinearLayout>

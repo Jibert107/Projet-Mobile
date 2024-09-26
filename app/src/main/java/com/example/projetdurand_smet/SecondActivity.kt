@@ -20,5 +20,8 @@ class SecondActivity : AppCompatActivity() {
         binding.tvLocation.text = "Localisation actuelle : $location"
         binding.tvIpAddress.text = "IP Address: $ipAddress"
         binding.tvDnsServers.text = "DNS Servers: $dnsServers"
+
+        binding.tvAdditionalText.text = " nom prénom : Charles Simon-Meunier \n N+1 Charles Van Wittenberghe \n Directuer général : Thomas CORDIVAL"
+
     }
 }
